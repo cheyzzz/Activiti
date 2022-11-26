@@ -41,7 +41,15 @@ public class DbSqlSessionFactory implements SessionFactory {
   static {
     
     String defaultOrderBy = " order by ${orderByColumns} ";
-    
+
+    //dm
+    databaseSpecificLimitBeforeStatements.put("dm", "");
+    databaseSpecificLimitAfterStatements.put("dm", "LIMIT #{maxResults} OFFSET #{firstResult}");
+    databaseSpecificLimitBetweenStatements.put("dm", "");
+    databaseOuterJoinLimitBetweenStatements.put("dm", "");
+    databaseSpecificOrderByStatements.put("dm", defaultOrderBy);
+    addDatabaseSpecificStatement("dm", "selectExclusiveJobsToExecute", "selectExclusiveJobsToExecute_integerBoolean");
+
     // h2
     databaseSpecificLimitBeforeStatements.put("h2", "");
     databaseSpecificLimitAfterStatements.put("h2", "LIMIT #{maxResults} OFFSET #{firstResult}");
