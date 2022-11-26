@@ -334,7 +334,7 @@ public class DbSqlSessionFactory implements SessionFactory {
   	}
 
   	// Only Oracle is making a fuss in one specific case right now
-		if ("oracle".equals(databaseType)) {
+		if ("oracle".equals(databaseType) || "dm".equals(databaseType)) {
 			bulkInsertableMap.put(EventLogEntryEntity.class, Boolean.FALSE);
 		}
   }
